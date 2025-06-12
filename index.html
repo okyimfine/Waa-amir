@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WaAmir</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-  <script defer src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </head>
 <body>
   <header>
@@ -22,8 +19,9 @@
   </div>
 
   <div id="chats" class="tab-content active">
-    <p class="placeholder-text">No chats yet</p>
-    <ul id="friendsList"></ul>
+    <div id="chatBox" class="chat-box"></div>
+    <input type="text" id="messageInput" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
   </div>
 
   <div id="updates" class="tab-content">
