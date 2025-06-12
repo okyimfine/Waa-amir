@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WaAmir</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>WaAmir</h1>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('chats')">Chats</button>
+    <button class="tab" onclick="showTab('updates')">Updates</button>
+    <button class="tab" onclick="showTab('calls')">Calls</button>
+  </div>
+
+  <div id="chats" class="tab-content active">
+    <p class="placeholder-text">No chats yet</p>
+    <ul id="friendsList"></ul>
+  </div>
+
+  <div id="updates" class="tab-content">
+    <p class="placeholder-text">No updates available</p>
+  </div>
+
+  <div id="calls" class="tab-content">
+    <p class="placeholder-text">No calls</p>
+  </div>
+
+  <div class="add-friend-container">
+    <input type="text" id="friendIdInput" placeholder="Enter Friend ID" />
+    <button onclick="addFriend()">Add</button>
+  </div>
+
+  <button class="fab" onclick="focusInput()">+</button>
+</body>
+</html>
