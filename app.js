@@ -1,22 +1,20 @@
 // app.js
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, set, onChildAdded, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+import { getDatabase, ref, set, onChildAdded, push } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
-// Gantikan config ini dengan milik kamu dari Firebase Console
+// Firebase config dari kamu
 const firebaseConfig = {
-  apiKey: "API_KEY_KAMU",
-  authDomain: "PROJECT_ID.firebaseapp.com",
-  databaseURL: "https://PROJECT_ID-default-rtdb.firebaseio.com",
-  projectId: "PROJECT_ID",
-  storageBucket: "PROJECT_ID.appspot.com",
-  messagingSenderId: "XXXXXXX",
-  appId: "APP_ID"
+  apiKey: "AIzaSyB8iT8Ltm1v0LpBM4WFQsu5ymUi1oS0CQY",
+  authDomain: "waamir-5eb50.firebaseapp.com",
+  projectId: "waamir-5eb50",
+  storageBucket: "waamir-5eb50.firebasestorage.app",
+  messagingSenderId: "631725165319",
+  appId: "1:631725165319:web:909cd0bbf09b44993513a2"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// Auto generate ID pengguna
 let myId = localStorage.getItem("waamir-id");
 if (!myId) {
   myId = "WA-" + Math.floor(Math.random() * 100000);
@@ -24,7 +22,6 @@ if (!myId) {
 }
 console.log("Your ID:", myId);
 
-// Tambah kawan
 function addFriend() {
   const friendId = document.getElementById("friendIdInput").value;
   if (!friendId) return alert("Masukkan ID kawan");
@@ -32,7 +29,6 @@ function addFriend() {
   alert("Kawan ditambah! Sekarang boleh mula chat.");
 }
 
-// Hantar mesej
 function sendMessage() {
   const messageInput = document.getElementById("messageInput");
   const message = messageInput.value;
@@ -54,14 +50,13 @@ function sendMessage() {
   messageInput.value = "";
 }
 
-// Dengar mesej secara live
 function listenForMessages() {
   const friendId = localStorage.getItem("friend-id");
   const chatPath = `chats/${myId}_${friendId}`;
   const chatRef = ref(db, chatPath);
 
   const chatBox = document.getElementById("chatBox");
-  chatBox.innerHTML = ""; // Kosongkan bila buka
+  chatBox.innerHTML = "";
 
   onChildAdded(chatRef, (data) => {
     const msg = data.val();
@@ -72,7 +67,6 @@ function listenForMessages() {
   });
 }
 
-// Fungsi tab
 window.showTab = function(tab) {
   document.querySelectorAll(".tab-content").forEach(e => e.classList.remove("active"));
   document.getElementById(tab).classList.add("active");
